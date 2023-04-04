@@ -81,32 +81,32 @@ canvas {
 	<button onclick="clearCanvas()">Clear Canvas</button>	 <!-- button that clears canvas-->
 
 <script>
-	const canvas = document.getElementById('Canvas');
-      	const context = canvas.getContext('2d');
+	const canvas = document.getElementById('myCanvas');
+      	const ctx = canvas.getContext('2d');
 	
-	function draw(){		//draws a reactangle
-		ctx.fillStyle = 'black';
-        	context.fillRect(30,60,90,120); //rectangle position
+	function draw(){			//draws a black triangle that starts at x=50, y=50 and is 100 wide and 125 tall
+		ctx.fillStyle = 'black';	//fill rectangle in black
+        	ctx.fillRect(50, 75, 100, 125); //rectangle position
         }
 	
 	function Name(){			// writes name 
-		context.fillStyle = 'blue';	// text color
-		context.font = 'bold 30px Arial';	// font and size
-		context.fillText('Neha', 300, 150); //the name and postion 
+		ctx.fillStyle = 'blue';	// text color
+		ctx.font = 'bold 30px Arial';	// font and size
+		ctx.fillText('Neha', 300, 150); //the name and postion 
 	}
 	
 	function loadImg() {			// loads DIY Diagnostics logo onto canvas
         	const img = new Image();
         	img.onload = function() {
-          	context.drawImage(img, 200, 300); //image position
+          	ctx.drawImage(img, 200, 300); //image position
         	};
         	img.src = "DIYlogo.jpg"	//where image is located in respository, pulls from it
       	}
 	//the function for displaying image I got from another group member during lab, I was having problems
 	
 	function clearCanvas(){			// clears canvas
-		var c = document.getElementById("Canvas");
-		var context = c.getContext("2d");
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
 		context.clearRect(0, 0, 800, 800); //position of canvas
 	}
 		
