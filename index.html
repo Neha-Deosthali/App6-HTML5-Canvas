@@ -73,7 +73,7 @@ canvas {
 <div id="content" class="w3-container">
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
-	<canvas id="Canvas" width="800" height="800"></canvas> <!-- set canvas size -->
+	<canvas id="Canvas" width="800" height="300"></canvas> <!-- set canvas size -->
 	<br> 							 
 	<button onclick="draw()">Draw Rectangle</button>	 <!-- button that draws rectangle when clicked-->
 	<button onclick="Name()">Write Name</button>	 <!-- button that writes my name when clicked-->
@@ -81,32 +81,32 @@ canvas {
 	<button onclick="clearCanvas()">Clear Canvas</button>	 <!-- button that clears canvas-->
 
 <script>
-	const canvas = document.getElementById('myCanvas');
-      	const ctx = canvas.getContext('2d');
+	const canvas = document.getElementById('Canvas');
+      	const context = canvas.getContext('2d');
 	
 	function draw(){			//draws a black triangle that starts at x=50, y=50 and is 100 wide and 125 tall
-		ctx.fillStyle = 'black';	//fill rectangle in black
-        	ctx.fillRect(50, 75, 100, 125); //rectangle position
+		context.fillStyle = 'black';	//fill rectangle in black
+        	context.fillRect(50, 75, 100, 125); //rectangle position
         }
 	
 	function Name(){			// writes name 
-		ctx.fillStyle = 'blue';	// text color
-		ctx.font = 'bold 30px Arial';	// font and size
-		ctx.fillText('Neha', 300, 150); //the name and postion 
+		context.fillStyle = 'blue';	// text color
+		context.font = 'bold 30px Arial';	// font and size
+		context.fillText('Neha', 300, 150); //the name and postion 
 	}
 	
 	function loadImg() {			// loads DIY Diagnostics logo onto canvas
         	const img = new Image();
         	img.onload = function() {
-          	ctx.drawImage(img, 200, 300); //image position
+          	context.drawImage(img, 200, 300); //image position
         	};
         	img.src = "DIYlogo.jpg"	//where image is located in respository, pulls from it
       	}
 	//the function for displaying image I got from another group member during lab, I was having problems
 	
 	function clearCanvas(){			// clears canvas
-		var c = document.getElementById("myCanvas");
-		var ctx = c.getContext("2d");
+		var c = document.getElementById("Canvas");
+		var context = c.getContext("2d");
 		context.clearRect(0, 0, 800, 800); //position of canvas
 	}
 		
