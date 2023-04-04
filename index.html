@@ -17,9 +17,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-using HTML to create a canvas with buttons
+Working in HTML canvas to add buttons with functions.
  
 Known Issues:
+Buttons not working 
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
@@ -34,8 +35,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 
 <script>
-	var docMod = document.lastModified; <!-- loads last modified time stamp into docMod variable-->
-	alert("This file last modified " + docMod); <!-- generates alert box with time stamp. If annoying, comment out this entire line.-->
+	var docMod = document.lastModified; // loads last modified time stamp into docMod variable
+	alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
 	console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
 </script>
 
@@ -59,6 +60,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     left: 0vw;
     z-index: 1;
 }
+canvas {
+        border: 2px solid black; /* Canvas border thickness and color*/
+}
 </style>
 
 <body>
@@ -69,53 +73,50 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <div id="content" class="w3-container">
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-	
-	<!--creating canvas-->
-	<canvas id = "a" width = "800" height= "800" style= "border: 1px solid black; "></canvas>
-	<br>
-	<button onclick = "draw_b()">Draw Rectangle </button> <!--button to draw rectangle-->
-	
-	<button onclick = "clearCanvas()">Clear Canvas</button> <!--button to clear canvas-->
-	
-	<button onclick = "name()"> My Name </button>
-	
-	<button onclick = "addImage()"> Add Image </button> 
-	<!--image to be loaded on canvas--> 
+	<canvas id="myCanvas" width="800" height="500"></canvas> <!-- canvas size -->
+	<br> 							 <!-- line break-->
+	<button onclick="drawRect()">Draw Rectangle</button>	 <!-- button that draws rectangle when clicked-->
+	<button onclick="writeName()">Write my Name</button>	 <!-- button that writes "Ansh Patel" when clicked-->
+	<button onclick="loadImg()">Show Image</button>		 <!-- button that displays DIY logo when clicked-->
+	<button onclick="clearCanvas()">Clear Canvas</button>	 <!-- button that clears canvas when clicked-->
 
-	     </div>
 <script>
-<!--id canvas pulling from code below-->
-let canvas = document.getElementById("a"); 
-let context = canvas.getContext("2d")
-	function draw_b() {
-  		context.fillRect(75, 50, 100, 120); //draws the rectangle
-	};
+	const canvas = document.getElementById('myCanvas');
+      	const ctx = canvas.getContext('2d');
 	
-
-	function addImage() {
-		const img = newImage();
-		img.onload = function(){
-			ctx.drawImage(img, 400, 300);
-		}
-		img.src = "DIYlogo.jpg"
+	function drawRect(){			//draws a black triangle that starts at x=50, y=50 and is 100 wide and 125 tall
+		ctx.fillStyle = 'black';	//fill rectangle in black
+        	ctx.fillRect(50, 75, 100, 125); //rectangle position
+        }
+	
+	function writeName(){			// writes Ansh Patel in bold Arial in orange
+		ctx.fillStyle = 'orange';	// text color
+		ctx.font = 'bold 20px Arial';	// font and size
+		ctx.fillText('Neha', 200, 300); //name and postion 
 	}
 	
-	function name() {
-		context.font = "20px Arial"; //font
-		context.fillStyle = "black;" //color
-		context.fillText("Neha",150,300); //position
-	}
-		
-	function clearCanvas() {
-		canvas.width = canvas.width;
-		context.clearRect(0,0,1000,800);
+	function loadImg() {			// loads DIY Diagnostics logo onto canvas
+        	const img = new Image();
+        	img.onload = function() {
+          		ctx.drawImage(img, 400, 300); //image position
+        	};
+        	img.src = "DIYlogo.jpg"	//image sourced from DIYLogo.jpeg file in repository
+      	}
+	//the function for displaying image on canvas is from ChatGTP
+	
+	function clearCanvas(){			// clears canvas
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, 800, 500);
 	}
 		
 </script>
+
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
 </footer>
-
+	
 </body>
+	
+	
 </html>
